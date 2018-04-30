@@ -263,3 +263,28 @@ function stringsplit(inputstr, sep)
 	end
 	return t
 end
+
+-- commands
+TriggerEvent('es:addGroupCommand', 'whitesteam', 'superadmin', function (source, args, user)
+		local msg = args[1]
+
+        	msg = 'steam:'..msg
+        	if args[2] == nil then
+        		MySQL.Async.execute('INSERT INTO whitelist(identifier) VALUES (@identifier)',
+			    {
+			      ['@identifier'] = msg,
+			    }
+			    )
+        	else
+        		MySQL.Async.execute('INSERT INTO whitelist(identifier,vip) VALUES (@identifier,@vip)',
+			    {
+			      ['@identifier'] = msg,
+			      ['@vip'] = args[2],
+			    }
+			    )
+			end
+        	loadWhiteList()
+        	print(msg..' ajouté à la whitelist')
+        	CancelEvent()
+end)
+
