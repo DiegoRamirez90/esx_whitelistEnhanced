@@ -20,3 +20,5 @@ THIS IS THE WHITELIST USED WITH ESX_WEBADMIN (not published yet)
   ```
 3. Import whitelist.sql in your database.
 4. Add `start esx_whitelistEnhanced`  in your server.cfg.
+
+I added a command for whitelist players in game
